@@ -1,3 +1,35 @@
-<a routerLink="/file-upload">File Upload</a>
-<a routerLink="/view-images">Show API Respons</a>
-<router-outlet></router-outlet>
+<header>
+    <nav class="navbar navbar-light border-bottom" style="background-color: #fff;">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <img src="https://www.cygnetinfotech.com/wp-content/uploads/2022/12/footer-logo.svg" alt=""
+                    class="d-inline-block align-text-top">
+            </a>
+        </div>
+    </nav>
+</header>
+
+<div class="container mt-5 mb-5">
+    <div class="main-area">
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
+            <li class="nav-item" role="presentation">
+                <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button"
+                    role="tab" aria-controls="home" aria-selected="true" routerLink="/file-upload">File Upload</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button"
+                    role="tab" aria-controls="profile" aria-selected="false" routerLink="/view-images">Show API
+                    Respons</button>
+            </li>
+        </ul>
+        <!-- <div class="tab-content" id="myTabContent">
+            <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab"></div>
+            <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab"></div>
+        </div> -->
+
+        <!-- <a routerLink="/file-upload">File Upload</a>
+        <a routerLink="/view-images">Show API Respons</a> -->
+        <router-outlet></router-outlet>
+    </div>
+
+</div>

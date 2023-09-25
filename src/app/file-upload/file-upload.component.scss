@@ -1,0 +1,68 @@
+.file-upload-area {
+    .file-upload-inner {
+        .drag-drop-area {
+            border: 1px dashed #c5c5c5;
+            padding: 30px;
+            border-radius: 5px;
+            text-align: center;
+
+            svg {
+                height: 25px;
+                width: 25px;
+                fill: #c5c5c5;
+            }
+
+            .upload-box {
+                .file {
+                    position: relative;
+                    overflow: hidden;
+                    cursor: pointer;
+                    background-color: #3cb4e7;
+                }
+
+
+                .upload-btn {
+                    position: absolute;
+                    font-size: 50px;
+                    opacity: 0;
+                    right: 0;
+                    top: 0;
+                }
+            }
+        }
+
+        .file-preview {
+            .preview-box {
+                padding: 10px;
+                border: 1px solid #c5c5c5;
+                border-radius: 5px;
+                text-align: center;
+                min-height: 100px;
+
+                .close-icon {
+                    text-align: end;
+
+                    svg {
+                        height: 20px;
+                        width: 20px;
+                    }
+                }
+
+                .file-icon {
+
+                    svg {
+                        height: 23px;
+                        width: 23px;
+                    }
+                }
+
+                .file-name {
+                    font-size: 13px;
+                    font-weight: 600;
+                    color: #1C274C;
+                }
+            }
+        }
+
+    }
+}
