@@ -32,7 +32,7 @@
                 tr {
                     td {
                         border-bottom: 1px solid #c5c5c5;
-                        padding: 12px 8px;
+                        padding: 8px 8px;
                         white-space: nowrap;
                         text-align: center;
                         vertical-align: middle;
@@ -52,8 +52,19 @@
                                         padding-left: 0px;
                                     }
 
-                                    a {
+                                    button {
                                         text-decoration: none;
+                                        padding: 3px;
+                                        border: none;
+                                        background-color: transparent;
+
+                                        &:focus {
+                                            border: none;
+                                        }
+
+                                        &:hover {
+                                            border: none;
+                                        }
 
                                         svg {
                                             height: 20px;
@@ -69,13 +80,31 @@
 
                             img {
                                 max-height: 70px;
-                                max-width: 70px;
+                                min-width: 70px;
                             }
 
                         }
                     }
+
+                    .nodata-found {
+                        padding: 15px;
+                        font-size: 14px;
+                        font-weight: 500;
+                        color: #c5c5c5ee;
+                    }
                 }
             }
         }
+    }
+}
+
+.image-preview-model {
+    box-sizing: border-box;
+    display: flex;
+
+    img {
+        height: auto;
+        width: 100%;
+        max-height: 400px;
     }
 }
