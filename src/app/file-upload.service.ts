@@ -16,4 +16,10 @@ export class FileUploadService {
     });
     return this.http.httpPostRequest(`${this.baseUrl}upload`,fd)
   }
+  getFiles():Observable<any>{
+    return this.http.httpGetRequest(`${this.baseUrl}list-files`)
+  }
+  getFileByName(name:any):Observable<any>{
+    return this.http.httpGetRequest(`${this.baseUrl}images/${name}`)
+  }
 }

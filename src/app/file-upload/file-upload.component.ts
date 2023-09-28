@@ -9,7 +9,7 @@ import { FileUploadService } from '../file-upload.service';
 export class FileUploadComponent implements OnInit {
   files: any[] = [];
   isValid = true
-  constructor(private fileUploadService:FileUploadService) { }
+  constructor(private fileUploadService: FileUploadService) { }
 
   ngOnInit(): void {
   }
@@ -37,7 +37,9 @@ export class FileUploadComponent implements OnInit {
     this.files.splice(index, 1);
   }
 
-  onSubmit(){
-
+  onSubmit() {
+    this.fileUploadService.addFile(this.files).subscribe((response) => {
+      debugger
+    })
   }
 }
