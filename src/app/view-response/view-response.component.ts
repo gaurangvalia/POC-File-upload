@@ -10,55 +10,28 @@ import { DomSanitizer } from '@angular/platform-browser';
 export class ViewResponseComponent implements OnInit {
   images: any = [];
   imageList:any[] = []
+  showImage:any;
   constructor(private fileUploadService: FileUploadService, private sanitizer: DomSanitizer) { }
 
   ngOnInit(): void {
     let data:any = []
     this.fileUploadService.getFiles().subscribe((res) => {
-
       res.forEach((element: any) => {
         let objectURL = 'data:image/jpeg;base64,' + element.base64;
         data.push({
           filename:element.filename,
-          image:this.sanitizer.bypassSecurityTrustUrl(objectURL)
+          image:this.sanitizer.bypassSecurityTrustUrl(objectURL),
+          type:element.type
         })
       })
-      debugger
       this.imageList = data
-      // this.allImageGet()
     })
   }
-  allImageGet(){
-    this.imageList.forEach((element: any) => {
-      debugger
-      this.fileUploadService.getFileByName(element.filename).subscribe((rs: any) => {
-        let objectURL = 'data:image/jpeg;base64,' + rs;
-        // this.images.push(objectURL)
-        console.log(objectURL);
-        
-      })
-    });
-  }
-  arrayBufferToBase64(buffer: ArrayBuffer): string {
-    const binary = String.fromCharCode(...new Uint8Array(buffer));
-    return btoa(binary);
-  }
-
-  extentionOfImges(fileName: any) {
-    // const extension = path.extname(fileName).toLowerCase();
-    // switch (extension) {
-    //   case '.jpg':
-    //   case '.jpeg':
-    //     return 'image/jpeg';
-    //   case '.png':
-    //     return 'image/png';
-    //   case '.gif':
-    //     return 'image/gif';
-    //   default:
-    //     return 'application/octet-stream';
-    // }
-  }
-  getImage(objectURL: any) {
-    return this.sanitizer.bypassSecurityTrustUrl(objectURL);
+  
+  showByName(value:any){
+    this.fileUploadService.getFileByName(value).subscribe((response:any)=>{
+      let objectURL = 'data:image/jpeg;base64,' + response;
+      this.showImage = this.sanitizer.bypassSecurityTrustUrl(objectURL)
+    })
   }
 }

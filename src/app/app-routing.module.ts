@@ -5,6 +5,11 @@ import { ViewResponseComponent } from './view-response/view-response.component';
 
 const routes: Routes = [
   {
+    path:'',
+    pathMatch:'full',
+    redirectTo:'file-upload'
+  },
+  {
     path:'file-upload',
     component:FileUploadComponent
   },

@@ -6,18 +6,19 @@ import { HttpService } from './http/http.service';
   providedIn: 'root'
 })
 export class FileUploadService {
-  baseUrl:string ='http://localhost:3000/';
+  // baseUrl:string ='http://localhost:3000/';
+  baseUrl:string ='https://skinpro-webapp-dev-demo.azurewebsites.net/';
   constructor(private http:HttpService) { }
 
   addFile(file:any):Observable<any>{
     let fd = new FormData();
     file.forEach((element:any) => {
-      fd.append('files', element);
+      fd.append('file', element);
     });
-    return this.http.httpPostRequest(`${this.baseUrl}upload`,fd)
+    return this.http.httpPostRequest(`${this.baseUrl}file-upload`,fd)
   }
   getFiles():Observable<any>{
-    return this.http.httpGetRequest(`${this.baseUrl}list-files`)
+    return this.http.httpGetRequest(`${this.baseUrl}`)
   }
   getFileByName(name:any):Observable<any>{
     return this.http.httpGetRequest(`${this.baseUrl}images/${name}`)
