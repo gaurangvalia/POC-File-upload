@@ -9,27 +9,29 @@ import { DomSanitizer } from '@angular/platform-browser';
 })
 export class ViewResponseComponent implements OnInit {
   images: any = [];
-  imageList:any[] = []
-  showImage:any;
+  imageList: any[] = []
+  showImage: any;
   constructor(private fileUploadService: FileUploadService, private sanitizer: DomSanitizer) { }
 
   ngOnInit(): void {
-    let data:any = []
-    this.fileUploadService.getFiles().subscribe((res) => {
-      res.forEach((element: any) => {
-        let objectURL = 'data:image/jpeg;base64,' + element.base64;
-        data.push({
-          filename:element.filename,
-          image:this.sanitizer.bypassSecurityTrustUrl(objectURL),
-          type:element.type
-        })
-      })
-      this.imageList = data
-    })
+    // let data: any = []
+    // let res = this.fileUploadService.getSesstion()
+    // res.forEach((element: any) => {
+    //   // let objectURL = 'data:image/jpeg;base64,' + element.file;
+    //   data.push({
+    //     filename: element.fileName,
+    //     image: element.file,
+    //     // image: this.sanitizer.bypassSecurityTrustUrl(objectURL),
+    //     label: element.label,
+    //     confidence: element.confidence,
+    //     status: element.status
+    //   })
+    // })
+    this.imageList = this.fileUploadService.getSesstion()
   }
-  
-  showByName(value:any){
-    this.fileUploadService.getFileByName(value).subscribe((response:any)=>{
+
+  showByName(value: any) {
+    this.fileUploadService.getFileByName(value).subscribe((response: any) => {
       let objectURL = 'data:image/jpeg;base64,' + response;
       this.showImage = this.sanitizer.bypassSecurityTrustUrl(objectURL)
     })

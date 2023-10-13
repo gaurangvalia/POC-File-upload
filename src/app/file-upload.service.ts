@@ -7,20 +7,27 @@ import { HttpService } from './http/http.service';
 })
 export class FileUploadService {
   // baseUrl:string ='http://localhost:3000/';
-  baseUrl:string ='https://skinpro-webapp-dev-demo.azurewebsites.net/';
-  constructor(private http:HttpService) { }
+  baseUrl: string = 'https://skinpro-webapp-dev-demo.azurewebsites.net/';
+  fileDetails:any = []
 
-  addFile(file:any):Observable<any>{
+  constructor(private http: HttpService) { }
+
+  addFile(file: any): Observable<any> {
     let fd = new FormData();
-    file.forEach((element:any) => {
-      fd.append('file', element);
-    });
-    return this.http.httpPostRequest(`${this.baseUrl}file-upload`,fd)
+    fd.append('file', file);
+    return this.http.httpPostRequest(`${this.baseUrl}file-upload`, fd)
   }
-  getFiles():Observable<any>{
+  getFiles(): Observable<any> {
     return this.http.httpGetRequest(`${this.baseUrl}`)
   }
-  getFileByName(name:any):Observable<any>{
+  getFileByName(name: any): Observable<any> {
     return this.http.httpGetRequest(`${this.baseUrl}images/${name}`)
+  }
+
+  setSesstion(data: any) {
+      this.fileDetails.push(data)
+  }
+  getSesstion() {
+    return this.fileDetails
   }
 }

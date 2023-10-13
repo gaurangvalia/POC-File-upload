@@ -3,7 +3,7 @@
 
     <div class="file-upload-inner mt-4">
         <div class="drag-drop-area" appDragDrop
-        (fileDropped)="onFileDropped($event)">
+        (fileDropped)="onFileDropped($event)" >
             <svg fill="#000000" width="800px" height="800px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                 <path d="M16,2l4,4H16ZM14,2H5A1,1,0,0,0,4,3V21a1,1,0,0,0,1,1H19a1,1,0,0,0,1-1V8H14Z" />
             </svg>
@@ -12,16 +12,18 @@
                 <!-- <input class="form-control upload-btn" type="file" id="formFileMultiple" multiple> -->
                 <div class="file btn btn-sm btn-primary">
                     Browse
-                    <input class="upload-btn" type="file"  #fileDropRef id="fileDropRef" name="file" multiple (change)="fileBrowseHandler($event)"/>
+                    <input class="upload-btn" type="file"  #fileDropRef id="fileDropRef" name="file"  (change)="fileBrowseHandler($event)"/>
+                    <!-- <input class="upload-btn" type="file"  #fileDropRef id="fileDropRef" name="file" multiple (change)="fileBrowseHandler($event)"/> -->
                 </div>
             </div>
         </div>
         <div class="file-preview mt-5">
             <div class="row">
-                <div class="col-md-4 col-lg-3 col-sm-12 mb-2" *ngFor="let file of files; let i = index" >
+                <div class="col-md-4 col-lg-3 col-sm-12 mb-2"  *ngIf="file">
+                <!-- <div class="col-md-4 col-lg-3 col-sm-12 mb-2" *ngFor="let file of files; let i = index" > -->
                     <div class="preview-box">
                         <div class="close-icon">
-                            <a  class="" (click)="removeCurrentFile(i)">
+                            <a  class="" (click)="removeCurrentFile()">
                                 <svg width="800px" height="800px" viewBox="0 0 24 24" fill="none"
                                     xmlns="http://www.w3.org/2000/svg">
                                     <path fill-rule="evenodd" clip-rule="evenodd"
@@ -36,14 +38,14 @@
                                 <path d="M16,2l4,4H16ZM14,2H5A1,1,0,0,0,4,3V21a1,1,0,0,0,1,1H19a1,1,0,0,0,1-1V8H14Z" />
                             </svg>
                         </div>
-                        <p class="file-name">{{ file?.name }}</p>
+                        <p class="file-name">{{ fileName }}</p>
                     </div>
                 </div>
             </div>
         </div>
         <div class="row mt-4">
             <div class="col-12 d-flex justify-content-end">
-                <button type="button" class="btn submit-btn" [disabled]="files.length === 0" (click)="onSubmit()">Submit</button>
+                <button type="button" class="btn submit-btn" [disabled]="!file" (click)="onSubmit()">Submit</button>
             </div>
         </div>
     </div>

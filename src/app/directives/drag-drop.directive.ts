@@ -36,8 +36,9 @@ export class DragDropDirective {
     evt.stopPropagation();
     this.fileOver = false;
     let files = evt.dataTransfer.files;
+    debugger
     if (files.length > 0) {
-      this.fileDropped.emit(files);
+      this.fileDropped.emit(files[0]);
     }
   }
 

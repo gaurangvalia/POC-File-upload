@@ -10,8 +10,9 @@
                         <th>id</th>
                         <th>photos</th>
                         <th>File Name</th>
-                        <th>file format</th>
-                        <th>Action</th>
+                        <th>Label</th>
+                        <th>Confidence (%)</th>
+                        <th>Status</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -19,12 +20,14 @@
                         <td>{{i+1}}</td>
                         <td>
                             <div class="images-area">
-                                <img [src]="item.image" />
+                                <img [src]="item.file" />
                             </div>
                         </td>
-                        <td>{{item.filename}}</td>
-                        <td>{{item.type}}</td>
-                        <td>
+                        <td>{{item.fileName}}</td>
+                        <td>{{item.label}}</td>
+                        <td>{{item.confidence}}</td>
+                        <td>{{item.status}}</td>
+                        <!-- <td>
                             <div class="icons-area">
                                 <ul>
                                     <li>
@@ -43,7 +46,7 @@
                                     </li>
                                 </ul>
                             </div>
-                        </td>
+                        </td> -->
                     </tr>
                     <tr *ngIf="imageList.length === 0">
                         <td colspan="5">

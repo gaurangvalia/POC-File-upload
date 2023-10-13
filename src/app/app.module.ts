@@ -8,6 +8,9 @@ import { ViewResponseComponent } from './view-response/view-response.component';
 import { DragDropDirective } from './directives/drag-drop.directive';
 import { HttpService } from './http/http.service';
 import { HttpClientModule } from '@angular/common/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -18,7 +21,10 @@ import { HttpClientModule } from '@angular/common/http';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,HttpClientModule
+    AppRoutingModule,
+    HttpClientModule,
+    BrowserAnimationsModule, // required animations module
+    ToastrModule.forRoot(), // ToastrModule added
   ],
   providers: [HttpService],
   bootstrap: [AppComponent]
